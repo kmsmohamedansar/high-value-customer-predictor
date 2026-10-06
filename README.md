@@ -1,57 +1,42 @@
-# 💎 High-Value Customer Predictor
+# High-Value Customer Predictor
 
-This app uses customer purchase patterns to predict whether a customer is **high-value**, using a trained **Random Forest** classifier. It also provides **SHAP-based feature explanations** to interpret predictions.
+Is this customer high-value? A model gives an answer, and, more importantly, shows why.
 
-👉 **[Live Demo on Hugging Face Spaces](https://huggingface.co/spaces/kmsmohamedansar/high-value-customer-predictor)**
+**Try it:** [live demo on Hugging Face Spaces](https://huggingface.co/spaces/kmsmohamedansar/high-value-customer-predictor)
 
----
+## Why it explains itself
 
-## 📊 Features
+A model that says "high value" with no reason attached isn't much use to a team that has to act on it. So this one comes with an explanation. A Random Forest makes the prediction, and a SHAP chart shows which inputs pushed the answer one way or the other.
 
-- ✅ Predicts high-value customers based on their purchase behavior
-- 📈 SHAP explainability for model transparency
-- 🧠 Trained on Superstore-style customer data
-- ⚡ Built with Streamlit and deployed to Hugging Face Spaces
-- 🖥️ Clean and user-friendly UI
+## What you put in
 
----
+- **Recency:** days since the last purchase
+- **Frequency:** how many past orders
+- **Average order value**
+- **Total profit**
+- **Average days between orders**
+- **Region:** Central, East, South or West
+- **Segment:** Consumer, Corporate or Home Office
 
-## 🧠 Model Details
+## What you get back
 
-- **Algorithm**: `RandomForestClassifier`
-- **Trained on**: RFM-style features from Superstore dataset
-- **Expected Features**:
-  - `recency_days`
-  - `frequency`
-  - `avg_order_value`
-  - `total_profit`
-  - `avg_days_between_orders`
-  - `region_enc`
-  - `segment_enc`
+- A prediction: high-value or not
+- A confidence score
+- A SHAP waterfall plot, so you can see what drove the result
 
----
+## The model
 
-## 🧾 Inputs & Outputs
+It's a `RandomForestClassifier` trained on RFM style features (recency, frequency and money) from the Superstore dataset. These are the features it expects:
 
-### 📥 Inputs:
-- **Recency** – Days since last purchase
-- **Frequency** – Number of past orders
-- **Average Order Value**
-- **Total Profit**
-- **Average Days Between Orders**
-- **Region** – One of: Central, East, South, West
-- **Segment** – One of: Consumer, Corporate, Home Office
+`recency_days`, `frequency`, `avg_order_value`, `total_profit`, `avg_days_between_orders`, `region_enc`, `segment_enc`
 
-### 📤 Outputs:
-- Binary prediction: **High-Value** or **Not**
-- Confidence score
-- **SHAP waterfall plot** showing feature impact
+The front end is Streamlit, deployed on Hugging Face Spaces.
 
----
+## Run it yourself
 
-## 🚀 Run Locally
-
-1. **Clone the repo**:
-   ```bash
-   git clone https://github.com/kmsmohamedansar/high-value-customer-predictor.git
-   cd high-value-customer-predictor
+```bash
+git clone https://github.com/kmsmohamedansar/high-value-customer-predictor.git
+cd high-value-customer-predictor
+pip install -r requirements.txt
+streamlit run app.py
+```
