@@ -1,5 +1,12 @@
 # 💎 High-Value Customer Predictor
 
+## In plain English
+
+This project estimates whether a customer is likely to be especially valuable based on past purchasing behaviour. It also explains which behaviours influenced each prediction, so the result is easier to inspect instead of being a unexplained score.
+
+**Status:** Working machine-learning demonstration using sample retail data.
+
+
 This app uses customer purchase patterns to predict whether a customer is **high-value**, using a trained **Random Forest** classifier. It also provides **SHAP-based feature explanations** to interpret predictions.
 
 👉 **[Live Demo on Hugging Face Spaces](https://huggingface.co/spaces/kmsmohamedansar/high-value-customer-predictor)**
